@@ -7,8 +7,10 @@ body{
 }
 
 .active{
+    color: white !important;
     background-color: #5c5c5c;
 }
 .active:hover{
+   
     background-color: #5c5c5c;
 }

@@ -5,7 +5,9 @@ import Register from "../components/Joining/Register";
 import { FaMoon } from "react-icons/fa";
 import { IoSunnyOutline } from "react-icons/io5";
 import Footer from "../components/common/Footer";
-let theme = localStorage.getItem("theme");
+import FavMovie from "../components/Features/FavMovie/FavMovie";
+import CheckingUser from "../components/auth/CheckingUser";
+
 export const router = createBrowserRouter([
   {
     //its home layout for over all website work be opening
@@ -13,23 +15,10 @@ export const router = createBrowserRouter([
     element: (
       <>
         <Navbar></Navbar>
-        <Outlet></Outlet>
-        <Footer/>
-        <div
-          className="fixed bottom-5 right-5 btn"
-          onClick={() => {
-            const theme = localStorage.getItem("theme");
-
-            document.documentElement.setAttribute(
-              "data-theme",
-              theme ? "light" : "dark"
-            );
-            localStorage.setItem("theme", theme ? "" : true);
-          }}
-        >
-          {" "}
-          {<FaMoon />}
+        <div className="mx-auto container">
+          <Outlet></Outlet>
         </div>
+        <Footer />
       </>
     ),
     children: [
@@ -48,6 +37,14 @@ export const router = createBrowserRouter([
           {
             path: "register",
             element: <Register></Register>,
+          },
+          {
+            path: "addmovie",
+            element: (
+              <CheckingUser>
+                <FavMovie></FavMovie>
+              </CheckingUser>
+            ),
           },
         ],
       },
