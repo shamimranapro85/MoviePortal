@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 export default function Navbar() {
   const navItems = (
     <>
@@ -44,12 +44,12 @@ export default function Navbar() {
            {navItems}
           </ul>
         </div>
-        <NavLink
+        <Link
           to="/"
           className=" normal-case flex items-center justify-center text-xl"
         >
           <img src="./favicon.ico" className="w-12" alt="" /> Movie Portal
-        </NavLink>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">

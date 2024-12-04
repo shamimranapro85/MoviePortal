@@ -1,9 +1,10 @@
 import { createBrowserRouter, NavLink, Outlet } from "react-router-dom";
 import Navbar from "../components/common/Navbar";
-import Login from "../components/auth/Login";
-import Register from "../components/auth/Register";
+import Login from "../components/Joining/Login";
+import Register from "../components/Joining/Register";
 import { FaMoon } from "react-icons/fa";
 import { IoSunnyOutline } from "react-icons/io5";
+import Footer from "../components/common/Footer";
 let theme = localStorage.getItem("theme");
 export const router = createBrowserRouter([
   {
@@ -13,8 +14,9 @@ export const router = createBrowserRouter([
       <>
         <Navbar></Navbar>
         <Outlet></Outlet>
+        <Footer/>
         <div
-          className="absolute bottom-5 right-5 btn"
+          className="fixed bottom-5 right-5 btn"
           onClick={() => {
             const theme = localStorage.getItem("theme");
 
