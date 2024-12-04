@@ -7,6 +7,7 @@ import { IoSunnyOutline } from "react-icons/io5";
 import Footer from "../components/common/Footer";
 import FavMovie from "../components/Features/FavMovie/FavMovie";
 import CheckingUser from "../components/auth/CheckingUser";
+import Home from "../components/Home";
 
 export const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ export const router = createBrowserRouter([
       </>
     ),
     children: [
+      {
+        path: "/",
+        element: <Home></Home>
+      },
       {
         path: "auth",
         element: (
