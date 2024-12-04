@@ -1,8 +1,17 @@
-# React + Vite
+# Movie Portal  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live Site: [Movie Portal](https://shamimrana-a10-orchid.surge.sh)  
 
-Currently, two official plugins are available:
+## Features  
+- **CRUD Operations**: Fully functional Create, Read, Update, and Delete operations to manage movies in the portal.  
+- **Private Routes**: Secure pages that are only accessible to authenticated users, ensuring a better user experience.  
+- **Firebase Authentication**: Implemented login and registration system using Firebase for robust and secure authentication.  
+- **Dynamic Content Management**: Users can add, edit, and delete movies with instant updates reflected on the website.  
+- **Modern UI**: Responsive and user-friendly design, providing seamless navigation on both desktop and mobile devices.  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies Used  
+- React.js  
+- Firebase Authentication  
+- React Router (Private Routes)  
+- CSS/Bootstrap for Styling  
+
