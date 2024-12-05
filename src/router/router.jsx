@@ -2,8 +2,6 @@ import { createBrowserRouter, NavLink, Outlet } from "react-router-dom";
 import Navbar from "../components/common/Navbar";
 import Login from "../components/Joining/Login";
 import Register from "../components/Joining/Register";
-import { FaMoon } from "react-icons/fa";
-import { IoSunnyOutline } from "react-icons/io5";
 import Footer from "../components/common/Footer";
 import FavMovie from "../components/Features/FavMovie/FavMovie";
 import CheckingUser from "../components/auth/CheckingUser";
@@ -12,7 +10,7 @@ import NotFound from "../components/common/NotFound";
 
 export const router = createBrowserRouter([
   {
-    //its home layout for over all website work be opening
+   
     path: "/",
     element: (
       <>

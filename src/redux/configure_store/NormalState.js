@@ -3,5 +3,6 @@ import reducer from "../slice/normalState";
 export const store = configureStore({
   reducer: {
     normalState: reducer,
+   
   },
 });

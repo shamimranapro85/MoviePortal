@@ -12,11 +12,11 @@ const normalStateManage = createSlice({
     changeName: (state) => {
       state.data[0] = "Shamim Rana";
     },
-    checkingUser: (state, actions) => {
-      console.log(actions.payload);
+    userState: (state, actions) => {
+      state.user = actions.payload;
     },
   },
 });
 
-export const { changeName, checkingUser } = normalStateManage.actions;
+export const { changeName, userState } = normalStateManage.actions;
 export default normalStateManage.reducer;

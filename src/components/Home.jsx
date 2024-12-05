@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { changeName, checkingUser } from "../redux/slice/normalState";
+import { changeName, userState } from "../redux/slice/normalState";
 
 export default function Home() {
   const state = useSelector((state) => state.normalState);
@@ -16,7 +16,7 @@ export default function Home() {
         className="btn"
         onClick={() => {
           dispatch(changeName());
-          dispatch(checkingUser({ shami: "shamim" }));
+          dispatch(userState({ shami: "shamim" }));
         }}
       >
         show original name
