@@ -6,9 +6,13 @@ import {
 import React from "react";
 import { authFirbase } from "../../firebase/firebaseAuth";
 import { Flip, toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Login() {
+  const location = useLocation()
+  // console.log("location from login:",location);
+  
+
   const navigate = useNavigate();
 
   const handSubmit = (e) => {
@@ -30,7 +34,9 @@ export default function Login() {
           theme: "light",
           transition: Flip,
           });
-        navigate("/")
+       
+          
+        navigate(location.state ? location.state : "/")
       })
       .catch((err) => {
         toast.warning("email or password is incorrect", {
@@ -46,13 +52,13 @@ export default function Login() {
         });
       });
     // const email =
-    console.log(e.target.email.value);
+    // console.log(e.target.email.value);
   };
 
   const GoogleProvider = new GoogleAuthProvider();
   const signinWithGoogle = () => {
     signInWithPopup(authFirbase, GoogleProvider).then((user) => {
-      console.log(user);
+      // console.log(user);
       toast.success("Login successfully", {
         position: "top-center",
         autoClose: 500,
@@ -64,7 +70,7 @@ export default function Login() {
         theme: "light",
         transition: Flip,
       });
-      navigate("/");
+      navigate(location.state ? location.state : "/")
     });
   };
 

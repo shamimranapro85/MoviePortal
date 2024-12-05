@@ -1,6 +1,6 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 const initialState = {
-  loading: false,
+  loading: true,
   data: ["sahmim"],
   user: null,
 };
@@ -14,9 +14,10 @@ const normalStateManage = createSlice({
     },
     userState: (state, actions) => {
       state.user = actions.payload;
+      state.loading = false
     },
   },
 });
 
-export const { changeName, userState } = normalStateManage.actions;
+export const { changeName, userState,loaded } = normalStateManage.actions;
 export default normalStateManage.reducer;

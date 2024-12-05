@@ -11,7 +11,7 @@ export default function Navbar() {
 const navigate = useNavigate()
   useEffect(() => {
     setUser(state.user);
-    console.log("navbar user set: ",user);
+ 
     
   }, [state]);
 
@@ -28,6 +28,9 @@ const navigate = useNavigate()
       </li>
       <li>
         <NavLink to={"/myfav"}>My Favorites</NavLink>
+      </li>
+      <li>
+        <NavLink to={"/myfav"}>Latest Movie</NavLink>
       </li>
     </>
   );

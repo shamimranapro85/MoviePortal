@@ -1,14 +1,19 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changeName, userState } from "../redux/slice/normalState";
+import CardSlider from "./Features/slider/CardSlider";
+
 
 export default function Home() {
   const state = useSelector((state) => state.normalState);
   const dispatch = useDispatch();
 
+
+  console.log(state.loading);
+  
   useEffect(() => {
-    console.log(state);
-  }, [state]);
+    // console.log(state);
+  }, [state]); 
   return (
     <>
       <div>{state.data[0]}</div>
@@ -21,6 +26,8 @@ export default function Home() {
       >
         show original name
       </button>
+      <CardSlider/>
+
     </>
   );
 }

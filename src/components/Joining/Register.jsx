@@ -42,7 +42,7 @@ export default function Register() {
 const GoogleProvider = new GoogleAuthProvider()
   const signinWithGoogle =()=>{
     signInWithPopup(authFirbase,GoogleProvider).then(user =>{
-      console.log(user)
+      // console.log(user)
       toast.success('Login successfully', {
         position: "top-center",
         autoClose: 500,
