@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { RatingCount } from "./Rating";
 import { Rating } from "react-simple-star-rating";
 import { useForm } from "react-hook-form";
 import { Flip, toast } from "react-toastify";
-import axios from "axios"
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { addmovie } from "../../../redux/slice/addMovie";
+import MoonLoader from "react-spinners/MoonLoader";
 export default function AddMovie() {
   const {
     register,
@@ -13,14 +16,14 @@ export default function AddMovie() {
     formState: { errors },
   } = useForm();
 
+  const state = useSelector((state) => state.addMovies);
+  const dispatch = useDispatch();
+
   const onSubmitted = async (data) => {
     try {
+      const responsed = await dispatch(addmovie(data));
       console.log(data);
-      const responsedAdd = await axios.post(
-        "https://orchid-server-xi.vercel.app/addmovie",
-        data
-      );
-      console.log("res", responsedAdd);
+
       toast.success("successfully added", {
         position: "top-center",
         autoClose: 500,
@@ -89,7 +92,7 @@ export default function AddMovie() {
                   <span className="label-text">Genre</span>
                 </label>
                 <select
-                  name="movieGenre"
+                  {...register("movieGenre")}
                   className="text-sm select select-bordered"
                 >
                   <option value="" disabled selected>
@@ -126,7 +129,7 @@ export default function AddMovie() {
                   <span className="label-text">Release Year</span>
                 </label>
                 <select
-                  {...register("movieGenre", {
+                  {...register("Release", {
                     required: true,
                   })}
                   defaultValue=""
@@ -187,7 +190,7 @@ export default function AddMovie() {
               )}
             </div>
             <button className="btn bg-green-500 btn-sm text-white">
-              Add movie
+              {state.loading && <MoonLoader size={15}></MoonLoader>} Add movie
             </button>
           </form>
         </div>

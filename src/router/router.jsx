@@ -8,6 +8,7 @@ import CheckingUser from "../components/auth/CheckingUser";
 import Home from "../components/Home";
 import NotFound from "../components/common/NotFound";
 import AddMovie from "../components/Features/Addmovie/AddMovie";
+import Allmovie from "../components/Features/AllMovie/Allmovie";
 
 export const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>
+      },
+      {
+        path: "/allmovies",
+        element: <Allmovie></Allmovie>
       },
       {
         path: "auth",
