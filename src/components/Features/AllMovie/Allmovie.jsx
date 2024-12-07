@@ -8,18 +8,14 @@ export default function Allmovie() {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log("i am full useeFFect all movie data page");
-    dispatch(AllMOvie());
+    (async() => {
+     await dispatch(AllMOvie());
+    })();
   }, []);
   console.log("i am all movie data static state", state);
+console.log(state.data && "true");
+console.log(state.data );
 
-  if (!state.data || !state.data.data || state.data.data.length === 0) {
-    return (
-      <div className="w-full flex justify-center items-center h-[90vh]">
-        <MoonLoader color={"#123abc"} size={150} />
-      </div>
-    );
-  }
   return (
     <>
       {state.loading ? (
@@ -29,7 +25,7 @@ export default function Allmovie() {
       ) : (
         <div className="w-full flex justify-center items-center">
           <div className="w-full grid gap-3 grid-cols-3">
-            {state.data.data.map((movie, index) => {
+            {state.data.map((movie, index) => {
               return (
                 <>
                   <div className="rounded-md relative h-32 hover:bg-red-400 overflow-hidden shadow-md ">

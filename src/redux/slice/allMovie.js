@@ -7,7 +7,6 @@ export const AllMOvie = createAsyncThunk(
       "https://orchid-server-xi.vercel.app/allmovie"
     );
     const data = await response.json();
-    console.log("iam get data reducer action : ", data);
     
     return data;
   }
@@ -16,10 +15,10 @@ export const AllMOvie = createAsyncThunk(
 const fetchDAtaReducer = createSlice({
   name: "fetchMovieAllData",
   initialState: {
-    data: ["no data found"],
+    data: {},
     status: "idle",
     error: null,
-    loading: false
+    loading: true
   },
   reducers: {},
   extraReducers: (builder) => {
