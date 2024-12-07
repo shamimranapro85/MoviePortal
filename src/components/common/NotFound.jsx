@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { Rating } from "react-simple-star-rating";
 
 export default function NotFound() {
   return (
@@ -10,6 +11,8 @@ export default function NotFound() {
         <NavLink className={"btn bg-green-500"} to={"/"}>
           Go Back to HOME
         </NavLink>
+
+        
       </div>
     </div>
   );

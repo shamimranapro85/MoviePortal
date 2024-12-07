@@ -7,6 +7,7 @@ import FavMovie from "../components/Features/FavMovie/FavMovie";
 import CheckingUser from "../components/auth/CheckingUser";
 import Home from "../components/Home";
 import NotFound from "../components/common/NotFound";
+import AddMovie from "../components/Features/Addmovie/AddMovie";
 
 export const router = createBrowserRouter([
   {
@@ -46,7 +47,7 @@ export const router = createBrowserRouter([
             path: "addmovie",
             element: (
               <CheckingUser>
-                <FavMovie></FavMovie>
+                <AddMovie></AddMovie>
               </CheckingUser>
             ),
           },
