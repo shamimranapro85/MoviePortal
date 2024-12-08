@@ -9,7 +9,7 @@ export const addFavMovie = createAsyncThunk("addFavMovie/postData", async (data)
   return jsonDAta;
 });
 
-const addMovieREducer = createSlice({
+const addFavMovieREducer = createSlice({
   name: "addFavMovie",
   initialState: {
     data: ["no movie data"],
@@ -37,4 +37,4 @@ const addMovieREducer = createSlice({
   },
 });
 
-export default addMovieREducer.reducer;
+export default addFavMovieREducer.reducer;

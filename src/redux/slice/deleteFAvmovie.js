@@ -1,15 +1,15 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const deleteFavmovie = createAsyncThunk("addFavMovie/postData", async (data) => {
+export const deleteFavmovie = createAsyncThunk("DeleteFAvMovie/postData", async (data) => {
   const jsonDAta = await axios.delete(
     `https://orchid-server-xi.vercel.app/favmovie/${data}`
   );
   return jsonDAta;
 });
 
-const addMovieREducer = createSlice({
-  name: "addFavMovie",
+const DeleteFAvMovie = createSlice({
+  name: "DeleteFAvMovie",
   initialState: {
     data: [],
     status: "idle",
@@ -36,4 +36,4 @@ const addMovieREducer = createSlice({
   },
 });
 
-export default addMovieREducer.reducer;
+export default DeleteFAvMovie.reducer;

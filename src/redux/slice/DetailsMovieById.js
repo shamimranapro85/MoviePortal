@@ -14,7 +14,7 @@ export const moviedetailsbyid = createAsyncThunk(
   }
 );
 
-const fetchDAtaReducer = createSlice({
+const DetailsMovie = createSlice({
   name: "Details",
   initialState: {
     data: {},
@@ -42,4 +42,4 @@ const fetchDAtaReducer = createSlice({
   },
 });
 
-export default fetchDAtaReducer.reducer;
+export default DetailsMovie.reducer;

@@ -14,7 +14,7 @@ export const feturedMovie = createAsyncThunk(
   }
 );
 
-const fetchDAtaReducer = createSlice({
+const furturedMovie = createSlice({
   name: "fetchMovieAllData",
   initialState: {
     data: {},
@@ -42,4 +42,4 @@ const fetchDAtaReducer = createSlice({
   },
 });
 
-export default fetchDAtaReducer.reducer;
+export default furturedMovie.reducer;

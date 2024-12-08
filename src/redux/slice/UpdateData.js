@@ -1,13 +1,16 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const UpdateMovieData = createAsyncThunk("addMovies/postData", async ({id,data}) => {
-  const jsonDAta = await axios.put(
-    `https://orchid-server-xi.vercel.app/updatedata/${id}`,
-    data
-  );
-  return jsonDAta;
-});
+export const UpdateMovieData = createAsyncThunk(
+  "addMovies/postData",
+  async ({ id, data }) => {
+    const jsonDAta = await axios.put(
+      `https://orchid-server-xi.vercel.app/updatedata/${id}`,
+      data
+    );
+    return jsonDAta;
+  }
+);
 
 const addMovieREducer = createSlice({
   name: "addMovies",
