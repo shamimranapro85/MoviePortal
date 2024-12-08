@@ -1,41 +1,27 @@
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getFAvMovie } from "../../../redux/slice/getFAvMovie";
-import { useEffect } from "react";
+import { LatestMovie } from "../../../redux/slice/LatestMOvie";
 import MoonLoader from "react-spinners/MoonLoader";
-import { deleteFavmovie } from "../../../redux/slice/deleteFAvmovie";
 
-export default function FavMovie() {
-  const favMovie = useSelector((state) => state.getfavmovie);
-  const userSate = useSelector((state) => state.normalState);
-  const deletestate = useSelector((state) => state.deleteFAvemovie);
+export default function Latest() {
   const dispatch = useDispatch();
+  const LtsState = useSelector((state) => state.LatestMOvied);
 
   useEffect(() => {
-    (async () => {
-      await dispatch(getFAvMovie(userSate.user.email));
-    })();
-  }, []);
-
-  if (favMovie.data?.length < 1) {
-    return (
-      <div className="flex justify-center items-center h-[90vh]">
-        <img src="https://i.ibb.co.com/PzWLFY6/7882958.webp" alt="" />
-      </div>
-    );
-  }
-  console.log("checking support:",favMovie);
-
+    dispatch(LatestMovie());
+  },[]);
+  console.log(LtsState);
+  
 
   return (
     <div>
-      {favMovie.loading ? (
+      {LtsState.loading ? (
         <div className="flex justify-center items-center">
           <MoonLoader size={25}></MoonLoader>
         </div>
       ) : (
-        <>
-          <div className="w-full grid gap-3 py-4 overflow-hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-            {favMovie.data.map((movie, index) => {
+        <div className="w-full grid gap-3 py-4 overflow-hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            {LtsState.data.map((movie, index) => {
               return (
                 <div className="rounded-md overflow-hidden relative flex flex-col hover:bg-gray-200 shadow-md ">
                   <div className="h-32 relative overflow-hidden rounded-md">
@@ -63,20 +49,12 @@ export default function FavMovie() {
                           : Math.round(movie.duration / 60) + " Hour"}{" "}
                       </p>
                     </div>
-                    <button
-                      onClick={() => {
-                       dispatch(deleteFavmovie(movie._id))
-                      }}
-                      className="btn btn-sm text-black bg-red-500 hover:text-white"
-                    >
-                      Delete Favorit
-                    </button>
+                  
                   </div>
                 </div>
               );
             })}
           </div>
-        </>
       )}
     </div>
   );

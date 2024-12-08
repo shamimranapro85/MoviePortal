@@ -5,11 +5,13 @@ import CardSlider from "./Features/slider/CardSlider";
 import MoonLoader from "react-spinners/MoonLoader";
 import { feturedMovie } from "../redux/slice/FeturedMovie";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import ContactUs from "./Features/contactUs/ContactUs";
+import FAQ from "./Features/FAQ/FAQ";
 export default function Home() {
   const state = useSelector((state) => state.normalState);
   const FeturedMOvie = useSelector((state) => state.FeturedMovie);
   const dispatch = useDispatch();
-const navigate = useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
     (async () => {
       await dispatch(feturedMovie());
@@ -67,9 +69,8 @@ const navigate = useNavigate()
                       </p>
                     </div>
                     <button
-                      
                       onClick={() => {
-                        navigate("/auth/movieDetail",{state: movie._id})
+                        navigate("/auth/movieDetail", { state: movie._id });
                       }}
                       className="btn btn-sm text-black hover:text-white bg-primary"
                     >
@@ -89,7 +90,10 @@ const navigate = useNavigate()
           </div>
         )}
       </div>
-      <div className=""></div>
+      {/* contact up */}
+      <ContactUs />
+      {/* faq section */}
+      <FAQ />
     </>
   );
 }

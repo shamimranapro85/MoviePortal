@@ -10,7 +10,11 @@ export default function CheckingUser({ children }) {
  
   
   if (state.loading) {
-    return <PuffLoader></PuffLoader>;
+    return <>
+      <div className="flex justify-center items-center">
+      <PuffLoader></PuffLoader>
+      </div>
+    </>;
   } else if (!state.user) {
     return <Navigate state={location.pathname} to={"/auth/login"}></Navigate>;
   } else {

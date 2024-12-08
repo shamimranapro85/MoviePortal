@@ -2,8 +2,10 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AllMOvie } from "../../../redux/slice/allMovie";
 import MoonLoader from "react-spinners/MoonLoader";
+import { useNavigate } from "react-router-dom";
 
 export default function Allmovie() {
+  const navigate = useNavigate()
   const state = useSelector((state) => state.allMovies);
 
   const dispatch = useDispatch();
@@ -60,6 +62,14 @@ export default function Allmovie() {
                           : Math.round(movie.duration / 60) + " Hour"}{" "}
                       </p>
                     </div>
+                    <button
+                      onClick={() => {
+                        navigate("/auth/movieDetail", { state: movie._id });
+                      }}
+                      className="btn btn-sm text-black hover:text-white bg-primary"
+                    >
+                      See Details
+                    </button>
                   </div>
                 </div>
               );

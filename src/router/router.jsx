@@ -10,6 +10,8 @@ import NotFound from "../components/common/NotFound";
 import AddMovie from "../components/Features/Addmovie/AddMovie";
 import Allmovie from "../components/Features/AllMovie/Allmovie";
 import DetailsMOvie from "../components/Features/DetailsMOvie";
+import UpdateMovie from "../components/Features/Update/Updatemovie";
+import Latest from "../components/Features/Latest/Latest";
 
 export const router = createBrowserRouter([
   {
@@ -32,6 +34,10 @@ export const router = createBrowserRouter([
       {
         path: "/allmovies",
         element: <Allmovie></Allmovie>
+      },
+      {
+        path: "/Latest",
+        element: <Latest></Latest>
       },
       {
         path: "auth",
@@ -62,6 +68,22 @@ export const router = createBrowserRouter([
             element: (
               <CheckingUser>
                 <DetailsMOvie></DetailsMOvie>
+              </CheckingUser>
+            ),
+          },
+          {
+            path: "myfav",
+            element: (
+              <CheckingUser>
+                <FavMovie></FavMovie>
+              </CheckingUser>
+            ),
+          },
+          {
+            path: "Update",
+            element: (
+              <CheckingUser>
+                <UpdateMovie></UpdateMovie>
               </CheckingUser>
             ),
           },

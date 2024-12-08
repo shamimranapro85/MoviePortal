@@ -47,7 +47,7 @@ const dispatch = useDispatch()
             }}
             navigation={true}
             modules={[Keyboard, Pagination, Navigation]}
-            className="mySwiper "
+            className="mySwiper rounded-lg"
           >
           
             {FeturedMOvies.data

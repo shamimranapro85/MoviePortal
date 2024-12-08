@@ -1,13 +1,17 @@
 import React from "react";
-import { RatingCount } from "./Rating";
 import { Rating } from "react-simple-star-rating";
 import { useForm } from "react-hook-form";
 import { Flip, toast } from "react-toastify";
-import axios from "axios";
+
 import { useDispatch, useSelector } from "react-redux";
-import { addmovie } from "../../../redux/slice/addMovie";
 import MoonLoader from "react-spinners/MoonLoader";
-export default function AddMovie() {
+import { UpdateMovieData } from "../../../redux/slice/UpdateData";
+import { useLocation, useNavigate } from "react-router-dom";
+export default function UpdateMovie() {
+  const navigate = useNavigate()
+  const location = useLocation();
+  console.log(location);
+
   const {
     register,
     handleSubmit,
@@ -18,6 +22,8 @@ export default function AddMovie() {
 
   const state = useSelector((state) => state.addMovies);
   const stateUser = useSelector((state) => state.normalState);
+  const updatState = useSelector((state) => state.updateMovie);
+
   const dispatch = useDispatch();
 
   const onSubmitted = async (data) => {
@@ -26,10 +32,11 @@ export default function AddMovie() {
 
       const fynalDAta = { ...data, email: stateUser.user.email };
 
-      const responsed = await dispatch(addmovie(fynalDAta));
-      console.log(responsed);
-
-      toast.success("successfully added movie you can see all movie page", {
+      const responsed = await dispatch(
+        UpdateMovieData({ id: location.state, data: fynalDAta })
+      );
+      navigate("/allmovies")
+      toast.success("successfully Update movie you can see all movie page", {
         position: "top-center",
         autoClose: 500,
         hideProgressBar: true,
@@ -45,11 +52,19 @@ export default function AddMovie() {
     }
   };
 
-  const year = [1950, 1951, 1952, 1953, 1954, 1955, 1956, 1957, 1958, 1959, 1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024]
+  const year = [
+    1950, 1951, 1952, 1953, 1954, 1955, 1956, 1957, 1958, 1959, 1960, 1961,
+    1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973,
+    1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985,
+    1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997,
+    1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+    2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021,
+    2022, 2023, 2024,
+  ];
   return (
     <>
       <div className="w-full flex h-[90vh] justify-center flex-col items-center">
-        <h1 className="text-5xl">Add now movie</h1>
+        <h1 className="text-5xl text-center">Update now movie</h1>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <form onSubmit={handleSubmit(onSubmitted)} className="card-body">
             <div className="grid grid-cols-2 gap-2">
@@ -148,7 +163,9 @@ export default function AddMovie() {
                   <option value="" disabled selected>
                     Choice Release Year
                   </option>
-                  {year.map(years=><option value={years}>{years}</option>)}
+                  {year.map((years) => (
+                    <option value={years}>{years}</option>
+                  ))}
                 </select>
                 {errors.movieGenre && (
                   <span className="text-red-500 pt-2 pl-2">Must be select</span>

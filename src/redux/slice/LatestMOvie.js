@@ -1,21 +1,21 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
-export const moviedetailsbyid = createAsyncThunk(
-  "Details/searchById",
-  async (id) => {
-    console.log("ami action je id paichi : ", id);
 
-    const response = await axios.post(
-      `https://orchid-server-xi.vercel.app/detailsMoviebyid/${id}`,
-      {}
+export const LatestMovie = createAsyncThunk(
+  "LatestMovie/feturedMovieGET",
+  async () => {
+    const response = await fetch(
+      "https://orchid-server-xi.vercel.app/Latest"
     );
-   
-    return response;
+    console.log(response);
+    
+    const data = await response.json();
+
+    return data;
   }
 );
 
 const fetchDAtaReducer = createSlice({
-  name: "Details",
+  name: "LatestMovie",
   initialState: {
     data: {},
     status: "idle",
@@ -25,16 +25,16 @@ const fetchDAtaReducer = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(moviedetailsbyid.pending, (state) => {
+      .addCase(LatestMovie.pending, (state) => {
         state.status = "loading";
         state.loading = true;
       })
-      .addCase(moviedetailsbyid.fulfilled, (state, action) => {
+      .addCase(LatestMovie.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.data = action.payload;
         state.loading = false;
       })
-      .addCase(moviedetailsbyid.rejected, (state, action) => {
+      .addCase(LatestMovie.rejected, (state, action) => {
         state.status = "failed";
         state.loading = false;
         state.error = action.error.message;

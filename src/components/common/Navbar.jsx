@@ -25,10 +25,10 @@ export default function Navbar() {
         <NavLink className={"btn"} to={"/auth/addmovie"}>Add Movie</NavLink>
       </li>
       <li>
-        <NavLink className={"btn"} to={"/myfav"}>My Favorites</NavLink>
+        <NavLink className={"btn"} to={"/auth/myfav"}>My Favorites</NavLink>
       </li>
       <li>
-        <NavLink className={"btn"} to={"/myfav"}>Latest Movie</NavLink>
+        <NavLink className={"btn"} to={"/Latest"}>Latest Movie</NavLink>
       </li>
     </>
   );
