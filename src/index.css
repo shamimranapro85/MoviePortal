@@ -60,3 +60,8 @@ body {
   display: inline;
   
 }
+/* btn */
+
+.btn{
+  transform: skewX(-10deg) !important;
+}

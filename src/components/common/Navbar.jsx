@@ -8,29 +8,27 @@ import { Flip, toast } from "react-toastify";
 export default function Navbar() {
   const state = useSelector((state) => state.normalState);
   const [user, setUser] = useState(null);
-const navigate = useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
     setUser(state.user);
- 
-    
   }, [state]);
 
   const navItems = (
     <>
       <li>
-        <NavLink to={"/"}>Home</NavLink>
+        <NavLink className={"btn"} to={"/"}>Home</NavLink>
       </li>
       <li>
-        <NavLink to={"/allmovies"}>All Movies</NavLink>
+        <NavLink className={"btn"} to={"/allmovies"}>All Movies</NavLink>
       </li>
       <li>
-        <NavLink to={"/auth/addmovie"}>Add Movie</NavLink>
+        <NavLink className={"btn"} to={"/auth/addmovie"}>Add Movie</NavLink>
       </li>
       <li>
-        <NavLink to={"/myfav"}>My Favorites</NavLink>
+        <NavLink className={"btn"} to={"/myfav"}>My Favorites</NavLink>
       </li>
       <li>
-        <NavLink to={"/myfav"}>Latest Movie</NavLink>
+        <NavLink className={"btn"} to={"/myfav"}>Latest Movie</NavLink>
       </li>
     </>
   );
@@ -47,7 +45,7 @@ const navigate = useNavigate()
 
   const onLogout = () => {
     signOut(authFirbase).then(() => {
-      toast.warning('LogOut successfully', {
+      toast.warning("LogOut successfully", {
         position: "top-center",
         autoClose: 500,
         hideProgressBar: true,
@@ -57,8 +55,8 @@ const navigate = useNavigate()
         progress: undefined,
         theme: "light",
         transition: Flip,
-        });
-        navigate("/")
+      });
+      navigate("/");
     });
   };
   return (
@@ -102,17 +100,20 @@ const navigate = useNavigate()
         <div className="navbar-end">
           {user ? (
             <div className="flex justify-center items-center">
-              <button onClick={onLogout} className="btn bg-red-400 btn-sm text-white mr-4">
-                LogOut
-              </button>
-              <div className="relative group flex justify-center items-center">
+              <div className="relative group  flex justify-center items-center">
                 <img
                   src={state.user.photoURL}
                   className="rounded-full flex justify-center items-center w-12 h-12 overflow-hidden"
                 />
 
-                <div className="hidden group-hover:block absolute top-10 right-2 transition-all duration-300 ease-in-out z-50 p-2 rounded-md shadow-md w-24 ">
+                <div className="hidden group-hover:block absolute backdrop backdrop-blur-xl text-white bg-black/80 top-10 right-2 transition-all duration-300 ease-in-out z-50 p-2 rounded-md shadow-md w-24 ">
                   {state.user.displayName}
+                  <button
+                    onClick={onLogout}
+                    className="btn bg-red-400 btn-sm text-white mr-4"
+                  >
+                    LogOut
+                  </button>
                 </div>
               </div>
             </div>

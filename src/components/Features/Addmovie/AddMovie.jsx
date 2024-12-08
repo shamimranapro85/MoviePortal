@@ -17,12 +17,17 @@ export default function AddMovie() {
   } = useForm();
 
   const state = useSelector((state) => state.addMovies);
+  const stateUser = useSelector((state) => state.normalState);
   const dispatch = useDispatch();
 
   const onSubmitted = async (data) => {
     try {
-      const responsed = await dispatch(addmovie(data));
-      console.log(data);
+      console.clear();
+
+      const fynalDAta = { ...data, email: stateUser.user.email };
+
+      const responsed = await dispatch(addmovie(fynalDAta));
+      console.log(responsed);
 
       toast.success("successfully added", {
         position: "top-center",
@@ -101,6 +106,8 @@ export default function AddMovie() {
                   <option value="comedy">comedy</option>
                   <option value="drama">Drama</option>
                   <option value="horror">horror</option>
+                  <option value="Actional">Actional</option>
+                  <option value="Romantic">Romantic</option>
                   <option value="other">other</option>
                 </select>
               </div>
@@ -155,7 +162,7 @@ export default function AddMovie() {
                 </label>
                 <div className="custom-rating-container  grow flex flex-col items-center ">
                   <Rating
-                    onClick={(value) => setValue("rating", value)}
+                    onClick={(value) => setValue("rating", value * 2)}
                     className=""
                     {...register("rating", {
                       required: true,

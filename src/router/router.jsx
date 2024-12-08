@@ -9,6 +9,7 @@ import Home from "../components/Home";
 import NotFound from "../components/common/NotFound";
 import AddMovie from "../components/Features/Addmovie/AddMovie";
 import Allmovie from "../components/Features/AllMovie/Allmovie";
+import DetailsMOvie from "../components/Features/DetailsMOvie";
 
 export const router = createBrowserRouter([
   {
@@ -17,7 +18,7 @@ export const router = createBrowserRouter([
     element: (
       <>
         <Navbar></Navbar>
-        <div className="mx-auto container">
+        <div className="mx-auto px-1 container">
           <Outlet></Outlet>
         </div>
         <Footer />
@@ -53,6 +54,14 @@ export const router = createBrowserRouter([
             element: (
               <CheckingUser>
                 <AddMovie></AddMovie>
+              </CheckingUser>
+            ),
+          },
+          {
+            path: "movieDetail",
+            element: (
+              <CheckingUser>
+                <DetailsMOvie></DetailsMOvie>
               </CheckingUser>
             ),
           },

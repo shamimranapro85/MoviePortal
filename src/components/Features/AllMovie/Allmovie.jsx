@@ -8,13 +8,17 @@ export default function Allmovie() {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    (async() => {
-     await dispatch(AllMOvie());
+    (async () => {
+      await dispatch(AllMOvie());
     })();
   }, []);
-  console.log("i am all movie data static state", state);
-console.log(state.data && "true");
-console.log(state.data );
+
+
+  if (state.data.length < 1) {
+    return <div className="flex justify-center items-center h-[90vh]">
+      <img src="https://i.ibb.co.com/PzWLFY6/7882958.webp" alt="" />
+    </div>;
+  }
 
   return (
     <>
@@ -24,38 +28,40 @@ console.log(state.data );
         </div>
       ) : (
         <div className="w-full flex justify-center items-center">
-          <div className="w-full grid gap-3 grid-cols-3">
+          <div className="w-full grid gap-3 py-4 overflow-hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
             {state.data.map((movie, index) => {
               return (
-                <>
-                  <div className="rounded-md relative h-32 hover:bg-red-400 overflow-hidden shadow-md ">
+                <div className="rounded-md overflow-hidden relative flex flex-col hover:bg-red-400 shadow-md ">
+                  <div className="h-32 relative overflow-hidden rounded-md">
                     <img
                       src={movie.PosterUrl}
-                      draggable="false"
-                      className="rounded-md object-cover self-center absolute h-full w-full top-0 left-0 z-0"
-                      alt=""
+                      className="self-center h-full w-full object-cover"
+                      alt="Poster Not Found"
                     />
-                    <div className="bg-black/60 p-3 relative h-full w-full text-center z-50">
-                      <h1 className="text-white shadow-lg text-xl">
+                  </div>
+                  <div className="bg-black/60 p-3 relative  w-full text-center flex flex-col  grow">
+                    <h1 className="text-white shadow-lg text-xl">
+                      {" "}
+                      {movie.movieTitle}
+                    </h1>
+                    <div className="flex w-full justify-center flex-col !text-start items-start   gap-2">
+                      {" "}
+                      <p className="text-white"> Genre: {movie.movieGenre}</p>
+                      <p className="text-white">
                         {" "}
-                        {movie.movieTitle}
-                      </h1>
-                      <div className="flex w-full justify-center flex-col !text-start items-start  gap-2">
+                        Rating: {movie.rating}/10
+                      </p>
+                      <p className="text-white"> Release: {movie.Release}</p>
+                      <p className="text-white">
                         {" "}
-                        <p className="text-white"> Genre: {movie.movieGenre}</p>
-                        <p className="text-white"> Rating: {movie.rating}/10</p>
-                        <p className="text-white"> Release: {movie.Release}</p>
-                        <p className="text-white">
-                          {" "}
-                          Duration :
-                          {Math.round(movie.duration / 60) > 60
-                            ? Math.round(movie.duration / 3600) + " Day"
-                            : Math.round(movie.duration / 60) + " Hour"}{" "}
-                        </p>
-                      </div>
+                        Duration :
+                        {Math.round(movie.duration / 60) > 60
+                          ? Math.round(movie.duration / 3600) + " Day"
+                          : Math.round(movie.duration / 60) + " Hour"}{" "}
+                      </p>
                     </div>
                   </div>
-                </>
+                </div>
               );
             })}
           </div>
