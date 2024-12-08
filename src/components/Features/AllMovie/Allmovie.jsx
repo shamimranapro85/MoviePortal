@@ -22,6 +22,10 @@ export default function Allmovie() {
     </div>;
   }
 
+  const onchangeSErache = ()=>{
+    
+  }
+
   return (
     <>
       {state.loading ? (
@@ -29,7 +33,8 @@ export default function Allmovie() {
           <MoonLoader color={"#123abc"} size={150} />
         </div>
       ) : (
-        <div className="w-full flex justify-center items-center">
+        <div className="w-full flex justify-center flex-col items-center">
+          <input type="text" className="input-sm border rounded-md  " onChange={onchangeSErache} placeholder="Search any movie" />
           <div className="w-full grid gap-3 py-4 overflow-hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
             {state.data.map((movie, index) => {
               return (
