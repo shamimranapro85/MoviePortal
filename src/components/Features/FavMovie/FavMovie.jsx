@@ -14,7 +14,7 @@ export default function FavMovie() {
     (async () => {
       await dispatch(getFAvMovie(userSate.user.email));
     })();
-  }, [deletestate]);
+  }, [deletestate.data]);
 
   if (favMovie.data?.length < 1) {
     return (
