@@ -66,6 +66,17 @@ export default function FavMovie() {
                     <button
                       onClick={() => {
                        dispatch(deleteFavmovie(movie._id))
+                       toast.success("Delete Favorit item successfully", {
+                        position: "top-center",
+                        autoClose: 500,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        transition: Flip,
+                      });
                       }}
                       className="btn btn-sm text-black bg-red-500 hover:text-white"
                     >
