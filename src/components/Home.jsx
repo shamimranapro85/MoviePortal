@@ -40,7 +40,7 @@ export default function Home() {
             <MoonLoader size={20} />
           </div>
         ) : (
-          <div className="w-full grid gap-3 py-4 overflow-hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          <div className="w-full relative grid gap-3 py-4 overflow-hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
             {FeturedMOvie.data.map((movie, index) => {
               return (
                 <div className="rounded-md overflow-hidden relative flex flex-col hover:bg-gray-200 shadow-md ">
@@ -59,14 +59,14 @@ export default function Home() {
                     <div className="flex w-full justify-center flex-col !text-start items-start   gap-2">
                       {" "}
                       <p className="text-white"> Genre: {movie.movieGenre}</p>
-                      <div className="custom-rating-container  grow flex flex-col items-center ">
+                      <div className="custom-rating-container mb-2 grow flex flex-col items-center ">
                         <Rating readonly initialValue={parseInt(movie.rating)/2} size={20} />
                       </div>
                      
-                      <p className="text-white"> Release: {movie.Release}</p>
-                      <p className="text-white">
+                      <p className="text-white absolute -top-6 rounded-md bg-black/30 left-2"> {movie.Release}</p>
+                      <p className="text-white absolute -top-6 rounded-md bg-black/30 right-2">
                         {" "}
-                        Time :
+                       
                         {Math.round(movie.duration / 60) > 60
                           ? Math.round(movie.duration / 3600) + " Day"
                           : Math.round(movie.duration / 60) + " Hour"}{" "}
