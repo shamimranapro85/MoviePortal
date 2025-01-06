@@ -7,6 +7,7 @@ import { feturedMovie } from "../redux/slice/FeturedMovie";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import ContactUs from "./Features/contactUs/ContactUs";
 import FAQ from "./Features/FAQ/FAQ";
+import { Rating } from "react-simple-star-rating";
 export default function Home() {
   const state = useSelector((state) => state.normalState);
   const FeturedMOvie = useSelector((state) => state.FeturedMovie);
@@ -58,11 +59,14 @@ export default function Home() {
                     <div className="flex w-full justify-center flex-col !text-start items-start   gap-2">
                       {" "}
                       <p className="text-white"> Genre: {movie.movieGenre}</p>
-                      <p className="text-white"> Rating: {movie.rating}/10</p>
+                      <div className="custom-rating-container  grow flex flex-col items-center ">
+                        <Rating readonly initialValue={parseInt(movie.rating)/2} size={20} />
+                      </div>
+                     
                       <p className="text-white"> Release: {movie.Release}</p>
                       <p className="text-white">
                         {" "}
-                        Duration :
+                        Time :
                         {Math.round(movie.duration / 60) > 60
                           ? Math.round(movie.duration / 3600) + " Day"
                           : Math.round(movie.duration / 60) + " Hour"}{" "}
