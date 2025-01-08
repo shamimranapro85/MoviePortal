@@ -15,3 +15,4 @@ Live Site: [Movie Portal](https://shamimrana-a10-orchid.surge.sh)
 - React Router (Private Routes)  
 - CSS/Tailwind for Styling  
 
+Backend repo: [Movie Portal Backend Repo](https://github.com/shamimranapro85/MoviePortal-backend.git)  
