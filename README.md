@@ -13,5 +13,5 @@ Live Site: [Movie Portal](https://shamimrana-a10-orchid.surge.sh)
 - React.js  
 - Firebase Authentication  
 - React Router (Private Routes)  
-- CSS/Bootstrap for Styling  
+- CSS/Tailwind for Styling  
 
